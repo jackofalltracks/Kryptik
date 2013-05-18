@@ -40,8 +40,9 @@ GEM
     bourne (1.4.0)
       mocha (~> 0.13.2)
     builder (3.0.4)
-    clearance (1.0.0.rc4)
+    clearance (1.0.0.rc7)
       bcrypt-ruby
+      email_validator
       rails (>= 3.0)
     coderay (1.0.9)
     coffee-rails (3.2.2)
@@ -54,6 +55,8 @@ GEM
     debug_inspector (0.0.2)
     diff-lcs (1.2.4)
     dotenv (0.7.0)
+    email_validator (1.4.0)
+      activemodel
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -162,7 +165,7 @@ DEPENDENCIES
   better_errors (~> 0.7.2)
   binding_of_caller (~> 0.7.1)
   bootstrap-sass (~> 2.3.1.0)
-  clearance (= 1.0.0.rc4)
+  clearance (= 1.0.0.rc7)
   coffee-rails (~> 3.2.2)
   factory_girl_rails
   foreman
