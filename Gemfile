@@ -4,6 +4,7 @@ gem 'rails', '3.2.13'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'simple_form'
+gem 'clearance', '1.0.0.rc4'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'meta_search', '~> 1.1.3'
 gem 'pg'
@@ -34,7 +35,3 @@ end
 # gem 'devise'
 # gem 'paperclip'
 # gem 'aws-sdk'
-
-
-
-
