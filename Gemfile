@@ -12,6 +12,7 @@ gem 'puma'
 gem 'foreman'
 
 group :test, :development do
+  gem 'capybara'
   gem 'rspec-rails', '~> 2.13.0'
   gem 'shoulda-matchers','~> 1.5.5'
   gem 'better_errors', '~> 0.7.2'
