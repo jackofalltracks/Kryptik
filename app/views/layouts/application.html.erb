@@ -33,16 +33,12 @@
           <div class="nav-collapse collapse">
             <ul class="nav pull-right">
                <li><a href="#">About Us</a></li>
-               <% if signed_in? %>
-                    <% if current_user.has_role? :admin %>
-                      <li><a href="/admin">Admin</a></li>
-                    <% end %>
-                  <li><%= link_to "Edit Myself", edit_user_registration_path %></li>
+                <% if signed_in? %>
+                  <li><%= link_to "Edit Myself", "#" %></li>
                   <li><%= link_to "Log Out", sign_out_path, method: :delete%></li>
-                  <!-- <li><a href="/<%= current_user.profile_name %>"> My Profile </a></li> -->
-                  <% else %>
-                <li><%= link_to "Sign in", sign_in_path %></li>
-                <li><%= link_to "Sign up", sign_up_path %></li>
+                <% else %>
+                  <li><%= link_to "Sign in", sign_in_path %></li>
+                  <li><%= link_to "Sign up", sign_up_path %></li>
                 <% end %>
             </ul>
           </div>   
