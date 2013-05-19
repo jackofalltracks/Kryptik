@@ -1,25 +1,3 @@
-# require 'spec_helper'
-
-# describe User do 
-  
-#   it "has a valid factory" do
-#     FactoryGirl.create(:user).should be_valid
-#   end
-  
-#   it "is invalid without an email address" do
-#     FactoryGirl.build(:user, email: nil).should_not be_valid
-#   end
-  
-#   it "is invalid without a password" do
-#     FactoryGirl.build(:user, password: nil).should_not be_valid
-#   end
-  
-#   it "creates a new studio with a new user" do
-#     FactoryGirl.create(:user).studios.count.should eq 1
-#   end
-
-# end
-
 require 'spec_helper'
 
 describe User do
@@ -39,10 +17,21 @@ describe User do
   it { should respond_to(:created_at) }
   it { should respond_to(:updated_at) }
   it { should respond_to(:confirmation_token) }
-  # it { should respond_to(:profile_name) }
-  # it { should have_one(:account) }
+  it { should respond_to(:first_name) }
+  it { should respond_to(:last_name) }
+  it { should respond_to(:full_name) }
+  it { should respond_to(:city) }
+  it { should respond_to(:state) }
+  it { should respond_to(:country) }
+  it { should respond_to(:zipcode) }
+  it { should respond_to(:sex) }
 
- 
+  it "should have a full name that is first & last added together" do
+    expect(@user.full_name).to eq(@user.first_name + @user.last_name)
+  end
+
+
+
   it "has a valid factory" do
     FactoryGirl.create(:user).should be_valid
   end
@@ -83,10 +72,6 @@ describe User do
     short_password_user.should_not be_valid
   end
 
- #  it "should have a first and last name" do
- #   expect(@user.full_name).to eq(@user.first_name + @user.last_name
- #    )
- #  end
 
 end
 
