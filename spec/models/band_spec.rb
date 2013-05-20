@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Band do
 	before(:each) do
-	@band = FactoryGirl.build(:band)
+		@band = FactoryGirl.build(:band)
 	end
 
 it { should allow_mass_assignment_of(:name) }
@@ -13,7 +13,7 @@ it "has a valid factory" do
 end
 
 it "should create a new instance given valid attributes" do
-	band = Band.create( band: "Cracker Kitchen" )
+	band = Band.create( name: "Cracker Kitchen" )
 	band.name = "DirtyBoyz1984"  
 	band.should be_valid
 end
