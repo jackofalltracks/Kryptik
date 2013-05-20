@@ -4,5 +4,5 @@ Clearance.configure do |config|
   config.mailer_sender = 'thefounder@detroitrails.co'
   config.password_strategy = Clearance::PasswordStrategies::BCrypt
   config.user_model = User
-  config.redirect_url = '/'
+  # config.redirect_url = '/'
 end

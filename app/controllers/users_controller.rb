@@ -1,4 +1,6 @@
 class UsersController < Clearance::UsersController
+  skip_before_filter :authorize, :only => [:create, :new]
+  before_filter :avoid_sign_in, :only => [:create, :new], :if => :signed_in?
 
  def edit
 	@user = User.find_by_id(params[:id])
@@ -74,7 +76,7 @@ class UsersController < Clearance::UsersController
   end
 
   def url_after_create
-    sign_in_url
+    '/users/#{current_user.id}/edit'
   end
 
   def url_after_update
