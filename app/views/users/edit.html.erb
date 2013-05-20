@@ -1,6 +1,6 @@
 <h2>Edit <%= current_user.email %></h2>
 
-<%= simple_form_for( @user, html: {class: "well", :multipart => true} ) do |f| %>
+<%= simple_form_for( @user, html: { :multipart => true } ) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -8,6 +8,11 @@
     <%= f.input :password, :autocomplete => "on", :required => false %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :zipcode %>
+    <%= f.input :country_id, collection: @continents, as: :grouped_select, group_method: :countries %>
+    <%= f.input :sex %>
   </div>
 
   <div class="form-actions">

@@ -10,6 +10,7 @@ gem 'meta_search', '~> 1.1.3'
 gem 'pg'
 gem 'puma'
 gem 'foreman'
+gem 'country_select'
 
 group :test, :development do
   gem 'capybara'
