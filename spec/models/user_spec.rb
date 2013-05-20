@@ -30,8 +30,6 @@ describe User do
     expect(@user.full_name).to eq(@user.first_name + @user.last_name)
   end
 
-
-
   it "has a valid factory" do
     FactoryGirl.create(:user).should be_valid
   end

@@ -1,7 +1,8 @@
 Kryptik::Application.routes.draw do
  	
- 	resources :users, only: [:edit, :update]
- 	resource :session, only: [:create, :new, :destroy]
+  resources :bands
+  resources :users, only: [:edit, :update]
+  resource :session, only: [:create, :new, :destroy]
 
  	match 'sign_up' => 'users#new', as:  'sign_up'
   	match 'sign_in' => 'sessions#new', as: 'sign_in'
