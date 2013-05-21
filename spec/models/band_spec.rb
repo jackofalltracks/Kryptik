@@ -7,6 +7,8 @@ describe Band do
 
 it { should allow_mass_assignment_of(:name) }
 it { should respond_to(:name) }	
+# Associations
+it { should belong_to(:user) }
 
 it "has a valid factory" do
 	FactoryGirl.create(:band).should be_valid

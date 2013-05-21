@@ -26,6 +26,9 @@ describe User do
   it { should respond_to(:zipcode) }
   it { should respond_to(:sex) }
 
+  # Associations
+  it { should have_many(:bands) }
+
   it "should have a full name that is first & last added together" do
     expect(@user.full_name).to eq(@user.first_name + @user.last_name)
   end

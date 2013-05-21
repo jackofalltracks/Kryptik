@@ -1,6 +1,6 @@
 Kryptik::Application.routes.draw do
  	
-  resources :bands
+  resources :bands 	
   resources :users, only: [:edit, :update]
   resource :session, only: [:create, :new, :destroy]
 
