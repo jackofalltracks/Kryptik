@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Band do
+	
 	before(:each) do
 		@band = FactoryGirl.build(:band)
 	end
@@ -16,7 +17,7 @@ end
 
 it "should create a new instance given valid attributes" do
 	band = Band.create( name: "Cracker Kitchen" )
-	band.name = "DirtyBoyz1984"  
+	# band.name = "DirtyBoyz1984"  
 	band.should be_valid
 end
 
