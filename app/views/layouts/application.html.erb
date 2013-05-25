@@ -2,13 +2,73 @@
 <html>
 <head>
   <title>Kryptik</title>
+  <meta charset="utf-8">
+  <%= yield(:head) %>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content=" ">
+  <meta name="keywords" content=" " />
+  <meta name="author" content="Malachai Frazier">
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <%= csrf_meta_tags %>	
+  <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
 </head>
-<body>
+<body class="<%= controller_name %> <%= action_name %> data-spy="scroll" data-target=".bs-docs-sidebar" ">
 
-<%= yield %>
+	<!-- navbar-inverse can be removed for lighter nav bar -->
+<div class="header navbar navbar-fixed-top">
+  <div class="navbar-inner">
+  	<div class="container">
+  		<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+      </button>  	
+        <a href="/" class="brand">Kryptik</a> 
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+               <li><a href="#">About Us</a></li>
+                <% if signed_in? %>
+                  <li><%= link_to "Manage Myself", edit_user_path(current_user.id) %></li>
+                  <li><%= link_to "Sign out", sign_out_path, method: :delete%></li>
+                <% else %>
+                  <li><%= link_to "Sign in", sign_in_path %></li>
+                  <li><%= link_to "Sign up", sign_up_path %></li>
+                <% end %>
+            </ul>
+          </div>   
+    </div>
+  </div>
+</div>
+<!-- End of Nav -->
+
+
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+      <a class="close" data-dismiss="alert">&#215;</a>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<div class="container">    
+
+	<%= yield %>
+
+</div>
 
 </body>
+
+<!-- Javascripts
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<%= javascript_include_tag "application" %>
+
 </html>

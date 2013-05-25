@@ -1,0 +1,9 @@
+<%= simple_form_for(@band) do |f| %>
+  <%= f.error_notification %>
+  	<%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+    <%= f.input :name %>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -32,5 +32,5 @@ test:
   database: kryptik_test
   host: localhost
   pool: 5
-  username: malachai
+  username: DetroitRails
   password: danladi

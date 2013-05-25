@@ -1,0 +1,12 @@
+<h1>Listing Bands</h1>
+
+<% @bands.each do |band| %>
+    <p><%= band.name %></p>
+    <p><%= link_to 'Show', band %></p>
+    <p><%= link_to 'Edit', edit_band_path(band) %></p>
+    <p><%= link_to 'Destroy', band, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>
+
+<br />
+
+<%= link_to 'New Band', new_band_path %>

@@ -1,0 +1,37 @@
+<!-- <div class="page-header"></div> -->
+
+<div class="row">
+  <div class="span5" style="padding-right:20px; border-right: 1px solid #ccc;">
+    <%= simple_form_for( @user, html: { multipart: true, class: "form-horizontal" } ) do |f| %>
+      <%= f.error_notification %>
+      <fieldset>
+        <legend> Editing Member: <%= current_user.email %></legend>
+          <%= f.input :email, required: true, autofocus: true %>
+          <%= f.input :password, autocomplete: "on", required: false %>
+          <%= f.input :country, collection: @continents %>
+          <%= f.input :sex, collection: @sex %>
+          <%= f.input :first_name  %>
+          <%= f.input :last_name, class: "span6" %>
+          <%= f.input :city, class: "span6" %>
+          <%= f.input :state %>
+          <%= f.input :zipcode %>
+          <div class="form-actions">
+            <%= f.button :submit, "Update Me", class: "btn btn-large btn-primary" %>
+          </div>
+      </fieldset>
+    <% end %>
+  </div>
+  <div class="span6">
+     <legend> Member of Band(s): <%= @user.bands.count %> <%= link_to 'Create a New Band', new_band_path, class: "btn btn-small" %></legend>
+     <fieldset>
+        <% if @user.bands === nil || @user.bands.empty? %>
+          <div class="well">
+            <p class="lead"> Not a member of a Band? Create one here!</p>
+            <%= link_to 'New Band', new_band_path, class: "btn btn-large btn-primary" %>
+          </div>    
+        <% else %>
+          <%= render 'mybands' %>
+        <% end %>
+     </fieldset>
+  </div>
+</div>
