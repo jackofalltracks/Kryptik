@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
   include Clearance::User
   attr_accessible :email, :zipcode, :city, :state, :country, :first_name, :last_name, :sex, :password
 
