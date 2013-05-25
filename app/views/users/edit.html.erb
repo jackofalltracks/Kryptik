@@ -27,7 +27,7 @@
         <% if @user.bands === nil || @user.bands.empty? %>
           <div class="well">
             <p class="lead"> Not a member of a Band? Create one here!</p>
-            <%= link_to 'New Band', new_band_path, class: "btn btn-large btn-primary" %>
+            <%= link_to 'New Band', new_band_path, class: "btn btn-large btn-block btn-primary" %>
           </div>    
         <% else %>
           <%= render 'mybands' %>

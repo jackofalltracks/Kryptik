@@ -12,12 +12,13 @@ class UsersController < Clearance::UsersController
 
  def update
 	@user = User.find(params[:id])
+    @bands = @user.bands
 	if @user.update_password password_reset_params
 		sign_in @user
 		@user.update_attributes(params[:user])
 		redirect_to "/"
 	else
-		Rails.logger.info(@user.errors.messages.inspect)
+		# Rails.logger.info(@user.errors.messages.inspect)
 		flash_failure_after_update
 		render :template => 'users/edit'
 	end
