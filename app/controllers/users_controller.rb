@@ -10,20 +10,37 @@ class UsersController < Clearance::UsersController
 	render template: 'users/edit'
  end
 
-  
-
  def update
 	@user = User.find(params[:id])
     @bands = @user.bands
+    role = Role.find(params[:user][:role_ids]) unless params[:user][:role_ids].nil?
+    params[:user] = params[:user].except(:role_ids)
 	if @user.update_password password_reset_params
 		sign_in @user
 		@user.update_attributes(params[:user])
+        @user.update_plan(role) unless role.nil?
         redirect_to edit_user_path, notice: 'User was successfully updated.'
 	else
-		# Rails.logger.info(@user.errors.messages.inspect)
 		flash_failure_after_update
 		render template:'users/edit'
 	end
+ end
+
+ def create
+    @user = user_from_params
+    if @user.save
+      sign_in @user
+      redirect_back_or url_after_create
+    else
+      render :template => 'users/new'
+    end
+  end
+
+ def build_resource(*args)
+    super
+    if params[:plan]
+      resource.add_role(params[:plan])
+    end
  end
 
   def password_reset_params

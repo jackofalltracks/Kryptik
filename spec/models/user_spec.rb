@@ -6,6 +6,26 @@ describe User do
     # @user2 = FactoryGirl.build(:user)
   end
 
+  context 'when user is a Fan' do
+
+    it "add_role Fan method should work" do
+      @user.add_role :fan
+      @user.has_role?(:fan).should be_true
+      @user.has_role?(:admin).should_not be_true
+    end
+  
+  end
+
+  context 'when user is an Artist' do
+    
+    it "add_role Artist method should work" do
+      @user.add_role :artist
+      @user.has_role?(:artist).should be_true
+      @user.has_role?(:admin).should_not be_true
+    end
+  
+  end
+
   it { should allow_mass_assignment_of(:email) }
   it { should allow_value("bigballscaptain@testicles.me").for(:email) }
   it { should_not allow_value("big_balls_captain").for(:email) }

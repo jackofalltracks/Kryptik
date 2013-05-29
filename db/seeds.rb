@@ -2,7 +2,7 @@
 puts 'CREATING ROLES'
 Role.create([
 	{ name: 'fan' },
-	{ name: 'band_member' }, 
+	{ name: 'artist' }, 
 	{ name: 'admin'}
 ], :without_protection => true)
 
