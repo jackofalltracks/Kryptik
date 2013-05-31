@@ -18,7 +18,6 @@ class UsersController < Clearance::UsersController
 	if @user.update_password password_reset_params
 		sign_in @user
 		@user.update_attributes(params[:user])
-        @user.update_plan(role) unless role.nil?
         redirect_to edit_user_path, notice: 'User was successfully updated.'
 	else
 		flash_failure_after_update
@@ -26,22 +25,20 @@ class UsersController < Clearance::UsersController
 	end
  end
 
+ def new
+    @user = user_from_params
+    @plan = params[:plan]
+    render :template => 'users/new'
+ end
+
  def create
     @user = user_from_params
-    if @user.save
-      sign_in @user
-      redirect_back_or url_after_create
-    else
-      render :template => 'users/new'
-    end
+    @plan = params[:plan]
+    @user.add_role @plan  
+    @user.save
+    sign_in @user
+    redirect_to edit_user_path(current_user.id), notice: 'User was successfully created!'
   end
-
- def build_resource(*args)
-    super
-    if params[:plan]
-      resource.add_role(params[:plan])
-    end
- end
 
   def password_reset_params
 	if params.has_key? :user

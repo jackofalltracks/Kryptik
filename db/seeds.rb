@@ -7,7 +7,7 @@ Role.create([
 ], :without_protection => true)
 
 # puts 'SETTING UP DEFAULT USER LOGIN'
-# user = User.create!(email: "thefounder@detroitrails.co", password: "please")
+# u = User.create!(email: "thefounder@detroitrails.co", password: "please")
 # user = User.create!( email: 'thefounder@detroitrails.co', password: 'Ethan2012', password_confirmation: 'Ethan2012', profile_name: "Detroit" )
 
 # puts '------------'

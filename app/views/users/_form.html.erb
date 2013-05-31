@@ -1,4 +1,7 @@
+<legend><%= @plan.titleize if @plan %> Plan</legend> 
+
 <div class='text-field'>
+  <%= form.hidden_field :role_ids, { value: Role.find_by_name(@plan).id } %>
   <%= form.label :email %>
   <%= form.text_field :email, :type => 'email' %>
 </div>

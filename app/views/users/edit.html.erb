@@ -5,7 +5,7 @@
     <%= simple_form_for( @user, html: { multipart: true, class: "form-horizontal" } ) do |f| %>
       <%= f.error_notification %>
       <fieldset>
-        <legend> Editing Member: <%= current_user.email %></legend>
+        <legend> Editing <%= @user.roles.first.name.titleize %> : <%= current_user.email %></legend>
           <%= f.input :email, required: true, autofocus: true %>
           <%= f.input :password, autocomplete: "on", required: false %>
           <%= f.input :country, collection: @continents %>

@@ -5,7 +5,7 @@ class SessionsController < Clearance::SessionsController
   def create
     @user = authenticate(params)
     @plan = params[:plan]
-    @user.add_role @plan
+    # @user.add_role @plan
     if @user.nil?
       flash_failure_after_create
       render :template => 'sessions/new', :status => :unauthorized
@@ -23,9 +23,9 @@ class SessionsController < Clearance::SessionsController
   def new
     @plan = params[:plan]
     if @plan
+      render :template => 'sessions/new'
       super
     end
-    render :template => 'sessions/new'
   end
 
   private

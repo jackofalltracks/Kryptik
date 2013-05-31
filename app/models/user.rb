@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   rolify
   include Clearance::User
-  attr_accessible :email, :zipcode, :city, :state, :country, :first_name, :last_name, :sex, :password
+  attr_accessible :email, :zipcode, :city, :state, :country, :first_name, :last_name, :sex, :password, :role_ids
 
-  validates :password, :presence => true, :length => { :within => 6..40 }
+  validates :password, presence: true, length: { :within => 6..40 }
   validates :email, presence: true, 
 	                uniqueness: true,
 	                format: {
