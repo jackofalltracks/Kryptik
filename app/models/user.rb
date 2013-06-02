@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
 	                }
 
-  has_many :bands
+  has_many :bands, dependent: :destroy 
 
   # after_create :new_band		                
 
@@ -20,10 +20,6 @@ class User < ActiveRecord::Base
 	def full_name
 		return if first_name == nil || last_name == nil
 		first_name + last_name
-	end
-
-	def new_band
-		
 	end
 
 end

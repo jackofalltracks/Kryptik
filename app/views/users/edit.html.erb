@@ -21,17 +21,22 @@
       </fieldset>
     <% end %>
   </div>
-  <div class="span6">
-     <legend> Member of Band(s): <%= @user.bands.count %> <%= link_to 'Create a New Band', new_band_path, class: "btn btn-small" %></legend>
-     <fieldset>
-        <% if @user.bands === nil || @user.bands.empty? %>
-          <div class="well">
-            <p class="lead"> Not a member of a Band? Create one here!</p>
-            <%= link_to 'New Band', new_band_path, class: "btn btn-large btn-block btn-primary" %>
-          </div>    
-        <% else %>
-          <%= render 'mybands' %>
-        <% end %>
-     </fieldset>
-  </div>
+
+  <% if @user.has_role? :artist %>
+
+    <div class="span5">
+      <fieldset>
+       <legend> Member of Band(s): <%= @user.bands.count %> <%= link_to 'Create a New Band', new_band_path, class: "btn btn-small" %></legend>
+          <% if @user.bands === nil || @user.bands.empty? %>
+            <div class="well">
+              <p class="lead"> Not a member of a Band? Create one!</p>
+            </div>    
+          <% else %>
+            <%= render 'mybands' %>
+          <% end %>
+       </fieldset>
+    </div>
+
+  <% end %>
+
 </div>
