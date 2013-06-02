@@ -17,7 +17,7 @@ class UsersController < Clearance::UsersController
 	if @user.update_password password_reset_params
 		sign_in @user
 		@user.update_attributes(params[:user])
-        redirect_to edit_user_path, notice: 'User was successfully updated.'
+    redirect_to edit_user_path, notice: 'User was successfully updated.'
 	else
 		flash_failure_after_update
 		render template:'users/edit'
