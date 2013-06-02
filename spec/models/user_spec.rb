@@ -49,6 +49,20 @@ describe User do
   # Associations
   it { should have_many(:bands) }
 
+  it "should be able to choose relevent gender" do
+    @user.sex = "Male"
+    expect(@user.sex).to eq("Male")
+    expect(@user.sex).to_not eq("Cat")
+
+    @user.sex = "Female"
+    expect(@user.sex).to eq("Female")
+    expect(@user.sex).to_not eq("Cat")
+
+    @user.sex = "Transgender"
+    expect(@user.sex).to eq("Transgender")
+    expect(@user.sex).to_not eq("Cat")
+  end
+
   it "should have a full name that is first & last added together" do
     expect(@user.full_name).to eq(@user.first_name + @user.last_name)
   end

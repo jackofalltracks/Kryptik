@@ -1,5 +1,5 @@
 class Band < ActiveRecord::Base
-  attr_accessible :name, :user_id
+  attr_accessible :name, :user_id, :position
   validates_presence_of :name
 
   belongs_to :user

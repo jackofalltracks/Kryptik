@@ -5,7 +5,7 @@ class UsersController < Clearance::UsersController
  def edit
 	@user = User.find_by_id(params[:id])
 	@continents = continents_array
-    @bands = @user.bands
+  @bands = @user.bands
 	@sex = %w{ Male Female Transgender }
 	render template: 'users/edit'
  end
