@@ -23,6 +23,17 @@ describe User do
       @user.has_role?(:artist).should be_true
       @user.has_role?(:admin).should_not be_true
     end
+
+    it "should tell us if the User is a member of a specific Band" do
+      Band.create!(
+      name: "Balls Deep", 
+      user_id: 1, 
+      position: "Second Puncher", 
+      bio: "Hello!")
+      expect(@user.member_of? "Balls Deep").to eq("Balls Deep") 
+      expect(@user.member_of? "BaLlS dEEp").to eq("Balls Deep") 
+      expect(@user.member_of? "Billy Bob").to eq(false) 
+    end
   
   end
 

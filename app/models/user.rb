@@ -23,7 +23,13 @@ class User < ActiveRecord::Base
 	end
 
 	def member_of?(band_name)
-    	self.bands.name
+    	self.bands.each do |band| 
+  			if band_name.downcase.strip === band.name.downcase.strip
+  				return band.name # should this just return True instead?
+  			else
+  				return false	
+  			end
+  		end 
   	end
 
 end
