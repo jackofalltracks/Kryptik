@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
+  rolify
   include Clearance::User
-  attr_accessible :email, :zipcode, :city, :state, :country, :first_name, :last_name, :sex, :password
+  attr_accessible :email, :zipcode, :city, :state, :country, :first_name, :last_name, :sex, :password, :role_ids
 
-  validates :password, :presence => true, :length => { :within => 6..40 }
+  validates :password, presence: true, length: { :within => 6..40 }
   validates :email, presence: true, 
 	                uniqueness: true,
 	                format: {
@@ -10,7 +11,7 @@ class User < ActiveRecord::Base
 
 	                }
 
-  has_many :bands
+  has_many :bands, dependent: :destroy 
 
   # after_create :new_band		                
 
@@ -21,8 +22,14 @@ class User < ActiveRecord::Base
 		first_name + last_name
 	end
 
-	def new_band
-		
-	end
+	def member_of?(band_name)
+    	self.bands.each do |band| 
+  			if band_name.downcase.strip === band.name.downcase.strip
+  				return band.name # should this just return True instead?
+  			else
+  				return false	
+  			end
+  		end 
+  	end
 
 end

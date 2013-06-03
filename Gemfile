@@ -11,6 +11,8 @@ gem 'pg'
 gem 'puma'
 gem 'foreman'
 gem 'country_select'
+gem 'rolify'
+gem 'cancan'
 
 group :test, :development do
   gem 'capybara'
@@ -30,8 +32,6 @@ end
 # gem 'flat-ui-rails'
 # gem 'rails_admin'
 # gem 'browser'
-# gem 'rolify'
-# gem 'cancan'
 # gem 'money-rails'
 # gem 'mail', '~> 2.5.3'
 # gem 'devise'

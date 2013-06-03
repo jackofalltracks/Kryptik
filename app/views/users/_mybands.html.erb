@@ -1,6 +1,9 @@
 <% @bands.each do |band| %>
   <div class="band">  
     <strong><%= link_to "Show #{band.name}", band %></strong> 
-    <p><%= link_to "Edit #{band.name}", edit_band_path(band) %> | Uploaded <%= time_ago_in_words(band.created_at) + " ago" %></p>
+    <p><%= link_to "Edit #{band.name}", edit_band_path(band) %> | Created <%= time_ago_in_words(band.created_at) + " ago" %> <% unless band.position.nil? || band.position.empty? %>
+    		| Position: <%= band.position %>
+    		<% end %>	
+    </p>
   </div>
 <% end %>

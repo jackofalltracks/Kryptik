@@ -1,7 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p> You've created <%= @band.name %>! </p>
+<div class="row-fluid">
 
+	<div class="span3">
+		<img src="http://placehold.it/350" />
+	</div>
+		
+	<div class="span9">
+		<h1> <%= @band.name %> </h1>
+		<% unless @band.bio.nil? || @band.bio.empty? %>
+			<p class="lead"> <%= @band.bio %> </p>
+		<% end %>
+    </div>
 
-<%= link_to 'Edit', edit_band_path(@band) %> |
-<%= link_to 'Back', bands_path %>
+    <div class="span9">
+    	<div class="page-header"> <h2>Available Tracks</h2> </div>
+		<%= render 'test_mp3' %>
+	</div>
+	
+</div>

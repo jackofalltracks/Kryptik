@@ -6,6 +6,37 @@ describe User do
     # @user2 = FactoryGirl.build(:user)
   end
 
+  context 'when user is a Fan' do
+
+    it "add_role Fan method should work" do
+      @user.add_role :fan
+      @user.has_role?(:fan).should be_true
+      @user.has_role?(:admin).should_not be_true
+    end
+  
+  end
+
+  context 'when user is an Artist' do
+    
+    it "add_role Artist method should work" do
+      @user.add_role :artist
+      @user.has_role?(:artist).should be_true
+      @user.has_role?(:admin).should_not be_true
+    end
+
+    it "should tell us if the User is a member of a specific Band" do
+      Band.create!(
+      name: "Balls Deep", 
+      user_id: 1, 
+      position: "Second Puncher", 
+      bio: "Hello!")
+      expect(@user.member_of? "Balls Deep").to eq("Balls Deep") 
+      expect(@user.member_of? "BaLlS dEEp").to eq("Balls Deep") 
+      expect(@user.member_of? "Billy Bob").to eq(false) 
+    end
+  
+  end
+
   it { should allow_mass_assignment_of(:email) }
   it { should allow_value("bigballscaptain@testicles.me").for(:email) }
   it { should_not allow_value("big_balls_captain").for(:email) }
@@ -28,6 +59,20 @@ describe User do
 
   # Associations
   it { should have_many(:bands) }
+
+  it "should be able to choose relevent gender" do
+    @user.sex = "Male"
+    expect(@user.sex).to eq("Male")
+    expect(@user.sex).to_not eq("Cat")
+
+    @user.sex = "Female"
+    expect(@user.sex).to eq("Female")
+    expect(@user.sex).to_not eq("Cat")
+
+    @user.sex = "Transgender"
+    expect(@user.sex).to eq("Transgender")
+    expect(@user.sex).to_not eq("Cat")
+  end
 
   it "should have a full name that is first & last added together" do
     expect(@user.full_name).to eq(@user.first_name + @user.last_name)

@@ -12,5 +12,6 @@ FactoryGirl.define do
     country "Mexico"
     created_at 5.days.ago
     updated_at Date.yesterday
+    id 1
   end
 end

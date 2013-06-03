@@ -41,10 +41,9 @@ class BandsController < ApplicationController
   # POST /bands.json
   def create
     @band = Band.new(params[:band])
-
     respond_to do |format|
       if @band.save
-        format.html { redirect_to @band, notice: 'Band was successfully created.' }
+        format.html { redirect_to edit_user_path(current_user.id), notice: 'Band was successfully created.' }
         format.json { render json: @band, status: :created, location: @band }
       else
         format.html { render action: "new" }
@@ -60,7 +59,7 @@ class BandsController < ApplicationController
 
     respond_to do |format|
       if @band.update_attributes(params[:band])
-        format.html { redirect_to @band, notice: 'Band was successfully updated.' }
+        format.html { redirect_to edit_user_path(current_user.id), notice: 'Band was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +75,7 @@ class BandsController < ApplicationController
     @band.destroy
 
     respond_to do |format|
-      format.html { redirect_to bands_url }
+      format.html { redirect_to edit_user_path(current_user.id), notice: 'Band was successfully dropped.'  }
       format.json { head :no_content }
     end
   end

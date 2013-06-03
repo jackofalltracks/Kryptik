@@ -1,16 +1,11 @@
-<%= form_for :session, url: session_path do |form| %>
-  <div class='text-field'>
-    <%= form.label :email %>
-    <%= form.text_field :email, :type => 'email' %>
+<%= simple_form_for :session, url: session_path do |f| %>
+  <div class='form-inputs'>
+    <%= f.input :email, :type => 'email' %>
+    <%= f.input :password %>
   </div>
 
-  <div class='password-field'>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class='submit-field'>
-    <%= form.submit %>
+  <div class='form-actions'>
+    <%= f.button :submit, "Sign In" %>
   </div>
 
   <div class='other-links'>
