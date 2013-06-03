@@ -27,7 +27,7 @@
     <div class="span5">
       <fieldset>
        <legend> Member of Band(s): <%= @user.bands.count %> <%= link_to 'Create a New Band', new_band_path, class: "btn btn-small" %></legend>
-          <% if @user.bands === nil || @user.bands.empty? %>
+          <% if @user.bands.nil? || @user.bands.empty? %>
             <div class="well">
               <p class="lead"> Not a member of a Band? Create one!</p>
             </div>    

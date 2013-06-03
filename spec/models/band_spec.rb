@@ -9,6 +9,7 @@ describe Band do
 	it { should allow_mass_assignment_of(:name) }
 	it { should respond_to(:name) }	
 	it { should respond_to(:position) }	
+	it { should respond_to(:bio) }	
 
 	# Associations
 	it { should belong_to(:user) }
@@ -28,7 +29,7 @@ describe Band do
 
 	it "should be an instance of Band Model" do
 		expect(@band).to be_an_instance_of(Band)
-		expect(@band).to_not be_an_instance_of(Band)
+		expect(@band).to_not be_an_instance_of(User)
 	end
 
 	it "should be only one Band at this FactoryGirl test" do
@@ -38,6 +39,11 @@ describe Band do
 	it "should have a position that is an type of String" do
 		expect(@band.position).class === String
 		expect(@band.position).class != Fixnum
+  	end
+
+  	it "should have a bio that is an type of Text/String" do
+		expect(@band.bio).class === String
+		expect(@band.bio).class != Array
   	end
 
 end

@@ -22,4 +22,8 @@ class User < ActiveRecord::Base
 		first_name + last_name
 	end
 
+	def member_of?(band_name)
+    	self.bands.name
+  	end
+
 end
