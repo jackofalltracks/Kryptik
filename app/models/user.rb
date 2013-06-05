@@ -13,8 +13,6 @@ class User < ActiveRecord::Base
 
   has_many :bands, dependent: :destroy 
 
-  # after_create :new_band		                
-
 	# Methods!
 
 	def full_name
@@ -23,13 +21,18 @@ class User < ActiveRecord::Base
 	end
 
 	def member_of?(band_name)
-    	self.bands.each do |band| 
-  			if band_name.downcase.strip === band.name.downcase.strip
-  				return band.name # should this just return True instead?
-  			else
-  				return false	
-  			end
-  		end 
-  	end
+  	self.bands.each do |band| 
+			if band_name.downcase.strip === band.name.downcase.strip
+				return band.name # should this just return True instead?
+			else
+				return false	
+			end
+		end 
+  end
+
+  # def member_list
+  #   user = User.find(params[:id])
+  #   Band.where(user: )
+  # end  
 
 end
