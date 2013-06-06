@@ -5,6 +5,7 @@ class Band < ActiveRecord::Base
   has_many :users, through: :members
   has_many :members
 
+  # Class Method returns all Bands positions
   def self.positions
   	Band.all.each do |e| 
   		puts e.position

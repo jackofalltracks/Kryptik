@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
 		first_name + last_name
 	end
 
+  # Return false if not a member, returns band.name if true. Not case sensitive
 	def member_of?(band_name)
   	self.bands.each do |band| 
 			if band_name.downcase.strip === band.name.downcase.strip
