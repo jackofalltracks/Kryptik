@@ -41,9 +41,11 @@ class BandsController < ApplicationController
   # POST /bands.json
   def create
     @band = Band.new(params[:band])
+    @user = current_user
+    @user.bands << @band
     respond_to do |format|
       if @band.save
-        format.html { redirect_to edit_user_path(current_user.id), notice: 'Band was successfully created.' }
+        format.html { redirect_to edit_user_path(current_user.id), notice: "#{Band.last.name} was created & you are a Member!" }
         format.json { render json: @band, status: :created, location: @band }
       else
         format.html { render action: "new" }

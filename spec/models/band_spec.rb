@@ -12,7 +12,8 @@ describe Band do
 	it { should respond_to(:bio) }	
 
 	# Associations
-	it { should belong_to(:user) }
+	it { should have_many(:users) }
+	it { should have_many(:members) }
 
 	it "has a valid factory" do
 		FactoryGirl.create(:band).should be_valid

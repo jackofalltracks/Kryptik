@@ -1,6 +1,6 @@
 <%= simple_form_for(@band) do |f| %>
   <%= f.error_notification %>
-  	<%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+  	 <!-- f.input :user_id, as: :hidden, input_html: { value: current_user.id }  -->
     <%= f.input :name, placeholder: "The Light Eaters" %>
     <%= f.input :position, placeholder: "Sparrow Breeder" %>
     <%= f.input :bio, as: :text, :input_html => {rows: 8} %>
