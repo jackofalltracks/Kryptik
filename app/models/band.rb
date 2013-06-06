@@ -1,8 +1,9 @@
 class Band < ActiveRecord::Base
-  attr_accessible :name, :user_id, :position, :positions, :genre, :bio
+  attr_accessible :name, :position, :positions, :genre, :bio # :user_id,
   validates_presence_of :name
 
-  belongs_to :user
+  has_many :users, through: :members
+  has_many :members
 
   def self.positions
   	Band.all.each do |e| 

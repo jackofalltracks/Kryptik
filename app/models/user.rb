@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
 
 	                }
 
-  has_many :bands, dependent: :destroy 
+  has_many :bands, through: :members
+  has_many :members, dependent: :destroy 
 
 	# Methods!
 
@@ -29,10 +30,5 @@ class User < ActiveRecord::Base
 			end
 		end 
   end
-
-  # def member_list
-  #   user = User.find(params[:id])
-  #   Band.where(user: )
-  # end  
 
 end
