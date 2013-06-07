@@ -15,6 +15,11 @@ describe Band do
 	it { should have_many(:users) }
 	it { should have_many(:members) }
 
+	it "adds any User to Member Array manually" do
+		@user = User.create!(email: "professional@uppercutter.co", password: "please")
+		@user.bands << @band
+	end
+
 	it "has a valid factory" do
 		FactoryGirl.create(:band).should be_valid
 	end
