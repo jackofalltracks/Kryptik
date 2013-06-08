@@ -17,11 +17,17 @@ describe User do
   end
 
   context 'when user is an Artist' do
+
+    it { should respond_to(:add_others) }
     
     it "add_role Artist method should work" do
       @user.add_role :artist
       @user.has_role?(:artist).should be_true
       @user.has_role?(:admin).should_not be_true
+    end
+
+    it "User should have an Array of bands" do
+      expect(@user.bands.class).to eq(Array)
     end
   
   end

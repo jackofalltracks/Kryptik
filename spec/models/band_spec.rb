@@ -18,6 +18,7 @@ describe Band do
 	it "adds any User to Member Array manually" do
 		@user = User.create!(email: "professional@uppercutter.co", password: "please")
 		@user.bands << @band
+		@user.bands.last.should == @band
 	end
 
 	it "has a valid factory" do

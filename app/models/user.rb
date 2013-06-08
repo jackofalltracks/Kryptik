@@ -32,4 +32,21 @@ class User < ActiveRecord::Base
 		end 
   end
 
+
+  def add_others(band_name, *args)
+    @the_band = Band.find_by_name(band_name.to_s)
+      args.each do |arg|
+        arg = User.find_by_email(arg)
+        arg.bands << @the_band
+        puts arg.bands.count
+      end
+  end
+
 end
+
+
+
+
+
+
+
