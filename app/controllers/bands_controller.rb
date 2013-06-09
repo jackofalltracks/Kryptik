@@ -42,12 +42,13 @@ class BandsController < ApplicationController
   # POST /bands.json
   def create
     @band = Band.new(params[:band])
-    @band.members.build
-    @band.save
+    # @band.members.build
+    # @band.save
     @user = current_user
-    @user.bands << @band
+    # @user.bands << @band # unless @user.bands.last.members.includes?(@user)
     respond_to do |format|
       if @band.save
+        @user.bands << Band.last
         format.html { redirect_to edit_user_path(current_user.id), notice: "#{Band.last.name} was created & you are a Member!" }
         format.json { render json: @band, status: :created, location: @band }
       else

@@ -3,7 +3,7 @@ class Band < ActiveRecord::Base
   validates_presence_of :name
 
   has_many :users, through: :members
-  has_many :members
+  has_many :members, dependent: :destroy 
   accepts_nested_attributes_for :members
 
   # Class Method returns all Bands positions
