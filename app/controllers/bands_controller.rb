@@ -25,6 +25,7 @@ class BandsController < ApplicationController
   # GET /bands/new.json
   def new
     @band = Band.new
+    @band.members.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +42,8 @@ class BandsController < ApplicationController
   # POST /bands.json
   def create
     @band = Band.new(params[:band])
+    @band.members.build
+    @band.save
     @user = current_user
     @user.bands << @band
     respond_to do |format|

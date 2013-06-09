@@ -10,4 +10,10 @@ class MembersController < ApplicationController
     @member.delete
     redirect_to band_members_path(@band)
   end
+
+  # def create
+  #   @band = Band.find(params[:band_id])    
+  #   @member = @band.members.create(params[:member])
+  # end
+
 end

@@ -8,7 +8,6 @@ describe Band do
 
 	it { should allow_mass_assignment_of(:name) }
 	it { should respond_to(:name) }	
-	it { should respond_to(:position) }	
 	it { should respond_to(:bio) }	
 
 	# Associations
@@ -43,10 +42,10 @@ describe Band do
 		expect(Band.count) === 1
 	end
 
-	it "should have a position that is an type of String" do
-		expect(@band.position).class === String
-		expect(@band.position).class != Fixnum
-  	end
+	# it "should have a position that is an type of String" do
+	# 	expect(@band.position).class === String
+	# 	expect(@band.position).class != Fixnum
+ #  	end
 
   	it "should have a bio that is an type of Text/String" do
 		expect(@band.bio).class === String

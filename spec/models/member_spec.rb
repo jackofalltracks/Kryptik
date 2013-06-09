@@ -10,6 +10,7 @@ describe Member do
   it { should respond_to(:band_id) }
   it { should belong_to(:user) }
   it { should belong_to(:band) }
+  it { should respond_to(:position) }	
 
 	# it "should tell us if the User is a member of a specific Band" do
 	#   Band.create!(

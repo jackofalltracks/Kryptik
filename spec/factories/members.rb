@@ -4,5 +4,6 @@ FactoryGirl.define do
   factory :member do
     user_id 1
     band_id 1
+    # position "Lead Singer"
   end
 end
