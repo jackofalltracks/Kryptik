@@ -14,6 +14,13 @@ describe Band do
 	it { should have_many(:users) }
 	it { should have_many(:members) }
 
+	it "should have one member upon creation" do
+		member = Member.create!(user_id: 1 , band_id: @band.id)
+		@band.members << member
+		@band.save
+		expect(@band.members.count).to eq(1)
+	end
+
 	it "adds any User to Member Array manually" do
 		@user = User.create!(email: "professional@uppercutter.co", password: "please")
 		@user.bands << @band
@@ -41,11 +48,6 @@ describe Band do
 	it "should be only one Band at this FactoryGirl test" do
 		expect(Band.count) === 1
 	end
-
-	# it "should have a position that is an type of String" do
-	# 	expect(@band.position).class === String
-	# 	expect(@band.position).class != Fixnum
- #  	end
 
   	it "should have a bio that is an type of Text/String" do
 		expect(@band.bio).class === String

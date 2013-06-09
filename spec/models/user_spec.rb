@@ -27,7 +27,7 @@ describe User do
       @user.add_others("Detroit Rails", "me@email.com")
       expect(@other_guy.bands.count).to eq(1)
     end
-    
+
     it "add_role Artist method should work" do
       @user.add_role :artist
       @user.has_role?(:artist).should be_true

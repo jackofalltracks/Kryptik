@@ -42,10 +42,8 @@ class BandsController < ApplicationController
   # POST /bands.json
   def create
     @band = Band.new(params[:band])
-    # @band.members.build
-    # @band.save
+    
     @user = current_user
-    # @user.bands << @band # unless @user.bands.last.members.includes?(@user)
     respond_to do |format|
       if @band.save
         @user.bands << Band.last
