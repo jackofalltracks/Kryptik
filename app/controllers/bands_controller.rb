@@ -25,7 +25,7 @@ class BandsController < ApplicationController
   # GET /bands/new.json
   def new
     @band = Band.new
-    @band.members.build
+    # @band.members.build
 
     respond_to do |format|
       format.html # new.html.erb

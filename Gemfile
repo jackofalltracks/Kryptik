@@ -22,6 +22,7 @@ group :test, :development do
   gem 'better_errors', '~> 0.7.2'
   gem 'binding_of_caller', '~> 0.7.1'
   gem 'factory_girl_rails'
+  gem 'rails-erd'
 end
 
 group :assets do
