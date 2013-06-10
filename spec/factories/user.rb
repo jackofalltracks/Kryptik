@@ -13,6 +13,6 @@ FactoryGirl.define do
     created_at 5.days.ago
     updated_at Date.yesterday
     id 1
-    bands [Band.create(name: "Detroit Rails", bio: "The best in your Mommma house")]
+    # bands [Band.create(name: "Detroit Rails", bio: "The best in your Mommma house")]
   end
 end

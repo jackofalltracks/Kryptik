@@ -25,7 +25,8 @@ class BandsController < ApplicationController
   # GET /bands/new.json
   def new
     @band = Band.new
-    # @band.members.build
+    # @member = @band.members.build(params[:member])
+    @band.members.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,12 +42,11 @@ class BandsController < ApplicationController
   # POST /bands
   # POST /bands.json
   def create
-    @band = Band.new(params[:band])
+    @band = current_user.bands.new(params[:band])
+    # @band.save
     
-    @user = current_user
     respond_to do |format|
       if @band.save
-        @user.bands << Band.last
         format.html { redirect_to edit_user_path(current_user.id), notice: "#{Band.last.name} was created & you are a Member!" }
         format.json { render json: @band, status: :created, location: @band }
       else

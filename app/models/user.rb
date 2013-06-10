@@ -11,9 +11,11 @@ class User < ActiveRecord::Base
 
 	                }
 
-  has_many :bands, through: :members, dependent: :destroy 
-  has_many :members, dependent: :destroy 
-
+  has_many :members
+  has_many :bands, through: :members
+  # has_many :bands, dependent: :destroy 
+  # has_many :members, through: :bands
+  
 	# Methods!
 
 	def full_name
@@ -41,6 +43,8 @@ class User < ActiveRecord::Base
         puts arg.bands.count
       end
   end
+
+ 
 
 end
 

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
   before(:each) do
     @user = FactoryGirl.build(:user)
-    @user.bands << Band.create(name: "Detroit Rails", bio: "The best in your Mommma house")
+    # @user.bands << Band.create(name: "Detroit Rails", bio: "The best in your Mommma house")
   end
 
   context 'when user is a Fan' do

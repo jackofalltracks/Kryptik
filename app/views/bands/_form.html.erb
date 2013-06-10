@@ -1,9 +1,10 @@
 <%= simple_form_for @band do |b| %>
   <%= b.error_notification %>
-  	  <!-- b.input :id, as: :hidden, input_html: { value: @band.id } %>   -->
+  	<% #= b.input :id, as: :hidden, input_html: { value: @user.id } %>  
     <%= b.input :name, placeholder: "The Light Eaters" %>
 
      	<%= b.simple_fields_for :members do |p| %>
+          <%= p.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
       		<%= p.input :position, placeholder: "Sparrow Breeder" %>
     	<% end %>
     

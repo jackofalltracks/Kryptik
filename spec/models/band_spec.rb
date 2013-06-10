@@ -15,14 +15,14 @@ describe Band do
 	it { should have_many(:members) }
 
 	it "should have one member upon creation" do
-		member = Member.create!(user_id: 1 , band_id: @band.id)
+		member = Member.create(user_id: 1 , band_id: @band.id)
 		@band.members << member
 		@band.save
 		expect(@band.members.count).to eq(1)
 	end
 
 	it "adds any User to Member Array manually" do
-		@user = User.create!(email: "professional@uppercutter.co", password: "please")
+		@user = User.create(email: "professional@uppercutter.co", password: "please")
 		@user.bands << @band
 		@user.bands.last.should == @band
 	end
