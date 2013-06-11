@@ -18,5 +18,4 @@ class MembersController < ApplicationController
   #   @user.bands << @band
   # end
 
-
 end

@@ -25,7 +25,6 @@ class BandsController < ApplicationController
   # GET /bands/new.json
   def new
     @band = Band.new
-    # @member = @band.members.build(params[:member])
     @band.members.build
 
     respond_to do |format|
@@ -37,13 +36,13 @@ class BandsController < ApplicationController
   # GET /bands/1/edit
   def edit
     @band = Band.find(params[:id])
+    # @users = User.all
   end
 
   # POST /bands
   # POST /bands.json
   def create
     @band = current_user.bands.new(params[:band])
-    # @band.save
     
     respond_to do |format|
       if @band.save

@@ -13,8 +13,6 @@ class User < ActiveRecord::Base
 
   has_many :members
   has_many :bands, through: :members
-  # has_many :bands, dependent: :destroy 
-  # has_many :members, through: :bands
   
 	# Methods!
 
@@ -32,16 +30,6 @@ class User < ActiveRecord::Base
 				return false	
 			end
 		end 
-  end
-
-
-  def add_others(band_name, *args)
-    @the_band = Band.find_by_name(band_name.to_s)
-      args.each do |arg|
-        arg = User.find_by_email(arg)
-        arg.bands << @the_band
-        puts arg.bands.count
-      end
   end
 
  

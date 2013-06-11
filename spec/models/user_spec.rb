@@ -18,15 +18,15 @@ describe User do
 
   context 'when user is an Artist' do
 
-    it { should respond_to(:add_others) }
+    # it { should respond_to(:add_others) }
 
-    it "add_others will add other users to bands" do
-      @other_guy = User.create(email: "me@email.com", password: "password")
-      expect(@other_guy.bands.count).to eq(0)
+    # it "add_others will add other users to bands" do
+    #   @other_guy = User.create(email: "me@email.com", password: "password")
+    #   expect(@other_guy.bands.count).to eq(0)
 
-      @user.add_others("Detroit Rails", "me@email.com")
-      expect(@other_guy.bands.count).to eq(1)
-    end
+    #   @user.add_others("Detroit Rails", "me@email.com")
+    #   expect(@other_guy.bands.count).to eq(1)
+    # end
 
     it "add_role Artist method should work" do
       @user.add_role :artist
