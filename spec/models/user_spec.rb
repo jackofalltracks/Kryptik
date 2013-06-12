@@ -18,16 +18,6 @@ describe User do
 
   context 'when user is an Artist' do
 
-    # it { should respond_to(:add_others) }
-
-    # it "add_others will add other users to bands" do
-    #   @other_guy = User.create(email: "me@email.com", password: "password")
-    #   expect(@other_guy.bands.count).to eq(0)
-
-    #   @user.add_others("Detroit Rails", "me@email.com")
-    #   expect(@other_guy.bands.count).to eq(1)
-    # end
-
     it "add_role Artist method should work" do
       @user.add_role :artist
       @user.has_role?(:artist).should be_true
@@ -59,10 +49,20 @@ describe User do
   it { should respond_to(:country) }
   it { should respond_to(:zipcode) }
   it { should respond_to(:sex) }
+  it { should respond_to(:gravatar_url) }
+  it { should respond_to(:gravatar_small) }
 
   # Associations
   it { should have_many(:bands) }
   it { should have_many(:members) }
+
+  it "gravatar_small & gravatar_url should return strings" do
+    expect(@user.gravatar_url).to_not be(nil)
+    expect(@user.gravatar_small).to_not be(nil)
+
+    expect(@user.gravatar_url.class).to be(String)
+    expect(@user.gravatar_small.class).to be(String)
+  end
 
   it "should be able to choose relevent gender" do
     @user.sex = "Male"

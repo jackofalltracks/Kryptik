@@ -23,17 +23,29 @@ class User < ActiveRecord::Base
 
   # Return false if not a member, returns band.name if true. Not case sensitive
 	def member_of?(band_name)
-  	self.bands.each do |band| 
+  		self.bands.each do |band| 
 			if band_name.downcase.strip === band.name.downcase.strip
 				return band.name # should this just return True instead?
 			else
 				return false	
 			end
 		end 
-  end
+  	end
 
+  	def gravatar_url
+	    stripped_email = email.strip
+	    downcased_email = stripped_email.downcase
+	    hash = Digest::MD5.hexdigest(downcased_email)
+	    "http://gravatar.com/avatar/#{hash}?s=200"  
+	end
+
+	def gravatar_small
+		stripped_email = email.strip
+		downcased_email = stripped_email.downcase
+		hash = Digest::MD5.hexdigest(downcased_email)
+		"http://gravatar.com/avatar/#{hash}"  
+	end
  
-
 end
 
 
