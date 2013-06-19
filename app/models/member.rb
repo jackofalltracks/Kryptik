@@ -10,13 +10,4 @@ class Member < ActiveRecord::Base
 		end
 	end
 
-	def add_others(band, *args)
-      @the_band = Band.find(params[:band_id])
-      args.each do |arg|
-        arg =  User.find(params[:user_id])
-        arg.bands << @the_band
-        # puts arg.bands.count
-      end
-  end
-
 end

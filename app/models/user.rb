@@ -32,6 +32,27 @@ class User < ActiveRecord::Base
 		end 
   	end
 
+  	def add_others(band, *args)
+      @the_band = Band.find(params[:band_id])
+      args.each do |arg|
+        arg =  User.find(params[:user_id])
+        arg.bands << @the_band
+      end
+  	end
+
+  	#Refactor this!
+  	def add_me(band_name)
+  		puts "Working on it..."
+  		puts "================="
+  		@checker = Band.pluck(:name)
+  		if band_name === @checker.last
+  			band = Band.find_by_name(@checker.first)
+  			bands << band
+  		else
+  			puts "Fail"	
+  		end
+  	end
+
   	def gravatar_url
 	    stripped_email = email.strip
 	    downcased_email = stripped_email.downcase
