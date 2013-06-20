@@ -10,6 +10,7 @@ FactoryGirl.define do
     state "Federal District"
     zipcode "06500"
     country "Mexico"
+    profile_name "1"
     created_at 5.days.ago
     updated_at Date.yesterday
     id 1

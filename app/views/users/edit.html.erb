@@ -8,6 +8,7 @@
         <legend> Editing <%= @user.roles.first.name.titleize %> : <%= current_user.email %></legend>
           <%= f.input :email, required: true, autofocus: true %>
           <%= f.input :password, autocomplete: "on", required: false %>
+          <%= f.input :profile_name, autofocus: true %>
           <%= f.input :country, :include_blank => 'Please choose...', :priority_countries => ['US', 'CA', 'MX', 'GB', 'FR'] %>
           <%= f.input :sex, collection: @sex %>
           <%= f.input :first_name  %>

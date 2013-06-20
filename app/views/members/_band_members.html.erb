@@ -1,3 +1,5 @@
 <% @band.users.each do |member| %>
-	<span><%= image_tag member.gravatar_small %></span>
+	 <a href= "/<%= member.profile_name %>" >
+	 	<span> <%= image_tag member.gravatar_small %> </span>
+	 </a>	
 <% end %>

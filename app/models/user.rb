@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   rolify
   include Clearance::User
-  attr_accessible :email, :zipcode, :city, :state, :country, :first_name, :last_name, :sex, :password, :role_ids
+  attr_accessible :email, :zipcode, :city, :state, :country, 
+                  :first_name, :last_name, :sex, :password, 
+                  :role_ids, :profile_name
 
   validates :password, presence: true, length: { :within => 6..40 }
   validates :email, presence: true, 
@@ -30,7 +32,7 @@ class User < ActiveRecord::Base
 				return false	
 			end
 		end 
-  	end
+  end
 
   	def add_others(band, *args)
       @the_band = Band.find(params[:band_id])

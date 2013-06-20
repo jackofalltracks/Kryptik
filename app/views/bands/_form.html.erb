@@ -28,14 +28,14 @@
     <fieldset>
       <div class=" ">
         <div>
-          <a href="#">
-            <% @band.users.each do |user| %>
-              <%= image_tag user.gravatar_small, alt: "#{user.email} email address" %>
-              <div class="caption">  
-                  <!-- <span> <%= user.email %> </span> -->
-              </div> 
-            <% end %>  
-          </a>
+          <% @band.users.each do |user| %>
+            <a href= "/<%= user.profile_name %>" >
+            <%= image_tag user.gravatar_small, alt: "#{user.email} email address" %>
+            </a>
+            <div class="caption">  
+                <!-- <span> <%= user.email %> </span> -->
+            </div> 
+          <% end %>  
         </div>  
       </div>  
     </fieldset>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130608225337) do
+ActiveRecord::Schema.define(:version => 20130620002209) do
 
   create_table "bands", :force => true do |t|
     t.string   "name"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20130608225337) do
     t.string   "state"
     t.string   "country"
     t.string   "sex"
+    t.string   "profile_name",                      :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

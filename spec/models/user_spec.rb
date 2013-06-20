@@ -51,6 +51,7 @@ describe User do
   it { should respond_to(:sex) }
   it { should respond_to(:gravatar_url) }
   it { should respond_to(:gravatar_small) }
+  it { should respond_to(:profile_name) }
 
   # Associations
   it { should have_many(:bands) }
