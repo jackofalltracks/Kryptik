@@ -36,7 +36,7 @@ class BandsController < ApplicationController
   # GET /bands/1/edit
   def edit
     @band = Band.find(params[:id])
-    # @users = User.all
+    @users = User.pluck(:email)
   end
 
   # POST /bands
@@ -59,6 +59,7 @@ class BandsController < ApplicationController
   # PUT /bands/1.json
   def update
     @band = Band.find(params[:id])
+    @all_artists = User.with_role(:artist).to_a
 
     respond_to do |format|
       if @band.update_attributes(params[:band])
