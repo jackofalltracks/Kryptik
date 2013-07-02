@@ -34,7 +34,9 @@
             <ul class="nav pull-right">
                <li><a href="#">About Us</a></li>
                 <% if signed_in? %>
-                  <li><a href="/<%= current_user.profile_name %>"> My Profile </a></li>
+                  <% if current_user.profile_name != current_user.id.to_s && !current_user.city.empty? && !current_user.state.empty? %>
+                    <li><a href="/<%= current_user.profile_name %>"> My Profile </a></li>
+                  <% end %>
                   <li><%= link_to "Manage Myself", edit_user_path(current_user.id) %></li>
                   <li><%= link_to "Sign out", sign_out_path, method: :delete%></li>
                 <% else %>

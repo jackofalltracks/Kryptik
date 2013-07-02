@@ -3,20 +3,24 @@
 	<div class="span3">
 		<p> <%= image_tag @user.gravatar_url, alt: "#{@user.email} email address" %> </p>
 
-		<div> 
-			<p class="page-header lead"> <%= @user.profile_name %>'s Bands</p>
-			<% @user.bands.each do |band| %>
-	 			<a href= "/bands/<%= band.id %>" >
-	 				<span> <img src="http://placehold.it/150" /> </span>
-	 			</a>	
-			<% end %>
-		</div>
+		<% if @user.has_role? :artist %>
+			<%= render 'user_bands' %>
+		<% else %>
+			<div>
+				<p class="page-header lead"> Bands I Love </p>
+			</div>
+		<% end %>
+	
 	</div>
-		
-	<div class="span9">
-		<h1> <%= @user.profile_name %> </h1>
-			<p class="lead"> <%= @user.city %>, <%= @user.state %> </p>
-    </div>
+	
+	<% if @user.has_role? :artist %>
+		<%= render 'user_info' %>
+	<% else %>		
+		<div class="span9">
+			<h1> <%= @user.profile_name %> <span class="lead"> Fan Page </span></h1>
+			<h4> <%= @user.city %>, <%= @user.state %> </h4>
+	    </div>
+    <% end %>
 
     <div class="span9">
     	<div class="page-header"> <h2>Status Updates</h2> </div>
