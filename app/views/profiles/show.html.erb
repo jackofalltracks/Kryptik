@@ -1,2 +1,25 @@
-<h1>Profiles#index</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<div class="row-fluid">
+
+	<div class="span3">
+		<p> <%= image_tag @user.gravatar_url, alt: "#{@user.email} email address" %> </p>
+
+		<div> 
+			<p class="page-header lead"> <%= @user.profile_name %>'s Bands</p>
+			<% @user.bands.each do |band| %>
+	 			<a href= "/bands/<%= band.id %>" >
+	 				<span> <img src="http://placehold.it/150" /> </span>
+	 			</a>	
+			<% end %>
+		</div>
+	</div>
+		
+	<div class="span9">
+		<h1> <%= @user.profile_name %> </h1>
+			<p class="lead"> <%= @user.city %>, <%= @user.state %> </p>
+    </div>
+
+    <div class="span9">
+    	<div class="page-header"> <h2>Status Updates</h2> </div>
+	</div>
+	
+</div>

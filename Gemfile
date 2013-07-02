@@ -17,12 +17,15 @@ gem 'cancan'
 group :test, :development do
   gem 'sextant' # Visit localhost:3000/rails/routes
   gem 'capybara'
-  gem 'rspec-rails', '~> 2.13.0'
-  gem 'shoulda-matchers','~> 1.5.5'
-  gem 'better_errors', '~> 0.7.2'
-  gem 'binding_of_caller', '~> 0.7.1'
+  gem 'rspec-rails' #, '~> 2.13.0'
+  gem 'shoulda-matchers' #,'~> 1.5.5'
+  gem 'better_errors' #, '~> 0.7.2'
+  gem 'binding_of_caller' #, '~> 0.7.1'
   gem 'factory_girl_rails'
   gem 'rails-erd'
+  gem 'pry-rails'
+  gem 'guard'
+  gem 'guard-rspec'
 end
 
 group :assets do

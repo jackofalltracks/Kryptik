@@ -35,6 +35,9 @@
           <% else %>
             <%= render 'mybands' %>
           <% end %>
+          <div class="form-actions">
+            <%= link_to 'Delete Account', @user, class: "btn btn btn-warning", method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
        </fieldset>
     </div>
 

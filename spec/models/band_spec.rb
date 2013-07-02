@@ -22,7 +22,7 @@ describe Band do
 	end
 
 	it "adds any User to Member Array manually" do
-		@user = User.create(email: "professional@uppercutter.co", password: "please")
+		@user = User.create(email: "professional@uppercutter.co", password: "please", profile_name: "BillyKiller")
 		@user.bands << @band
 		@user.bands.last.should == @band
 	end
