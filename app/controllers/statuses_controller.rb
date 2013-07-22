@@ -25,7 +25,6 @@ class StatusesController < ApplicationController
   # GET /statuses/new.json
   def new
     @status = Status.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @status }
@@ -44,7 +43,7 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.save
-        format.html { redirect_to @status, notice: 'Status was successfully created.' }
+        format.html { redirect_to "/#{current_user.profile_name}", notice: 'Status was successfully created.' }
         format.json { render json: @status, status: :created, location: @status }
       else
         format.html { render action: "new" }
@@ -60,7 +59,7 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.update_attributes(params[:status])
-        format.html { redirect_to @status, notice: 'Status was successfully updated.' }
+        format.html { redirect_to "/#{current_user.profile_name}", notice: 'Status was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +75,7 @@ class StatusesController < ApplicationController
     @status.destroy
 
     respond_to do |format|
-      format.html { redirect_to statuses_url }
+      format.html { redirect_to "/#{current_user.profile_name}" }
       format.json { head :no_content }
     end
   end

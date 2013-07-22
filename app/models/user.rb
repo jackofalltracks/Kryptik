@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 	                }
 
   has_many :members
+  has_many :statuses, dependent: :destroy
   has_many :bands, through: :members
   
 	# Methods!

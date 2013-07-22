@@ -6,7 +6,7 @@ class Member < ActiveRecord::Base
 
 	def find_all_users_email
 		User.all.each do |user|
-	  	return user.email # returns an Array
+	  		return user.email # returns an Array
 		end
 	end
 

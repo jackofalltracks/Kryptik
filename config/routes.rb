@@ -1,8 +1,6 @@
 Kryptik::Application.routes.draw do
 
   resources :statuses
-
-
   resources :bands do
   	resources :members
   end	

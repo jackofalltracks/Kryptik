@@ -1,27 +1,13 @@
 <h1>Listing statuses</h1>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Content</th>
-    <th>Index</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @statuses.each do |status| %>
-  <tr>
-    <td><%= status.user_id %></td>
-    <td><%= status.content %></td>
-    <td><%= status.index %></td>
-    <td><%= link_to 'Show', status %></td>
-    <td><%= link_to 'Edit', edit_status_path(status) %></td>
-    <td><%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <p><%= status.user_id %></p>
+    <p><%= status.content %></p>
+    <p><%= link_to 'Show', status %></p>
+    <p><%= link_to 'Edit', edit_status_path(status) %></p>
+    <p><%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% end %>
-</table>
-
 <br />
 
 <%= link_to 'New Status', new_status_path %>

@@ -1,8 +1,8 @@
 <div> 
 	<p class="page-header lead"> <%= @user.profile_name %>'s Bands</p>
 	<% @user.bands.each do |band| %>
-			<a href= "/bands/<%= band.id %>" >
-				<span> <img src="http://placehold.it/150" /> </span>
-			</a>	
+		<a href= "/bands/<%= band.id %>" >
+			<span> <img src="http://placehold.it/150" /> </span>
+		</a>	
 	<% end %>
 </div>
