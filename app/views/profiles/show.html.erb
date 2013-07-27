@@ -26,9 +26,9 @@
     <% end %>
 
     <div class="span9">
-    	<div class="page-header"> <h2>Status Updates</h2> </div>
+    	<div class="page-header"> <h2>Status Updates <%= render 'new_status' %> </h2> </div>
     	<% if @user.statuses.empty? %>
-		  <h3 class="well">Hmm. No status updates as of yet. <% if current_user.id === @user.id %> <%= link_to "Create One!", new_status_path %> <% end %> </h3>
+		  <h3 class="well">Hmm. No status updates as of yet. </h3>
 		<% else %>
 	    	<div> 
 				<% @user.statuses.each do |s| %>	
