@@ -14,5 +14,11 @@ class Band < ActiveRecord::Base
   	end 
   end
 
+  def members_statuses
+    self.users.each do |u|
+      u.statuses.each { |s| p s.content }
+    end
+  end
+
   
 end

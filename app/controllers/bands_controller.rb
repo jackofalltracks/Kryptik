@@ -14,6 +14,7 @@ class BandsController < ApplicationController
   # GET /bands/1.json
   def show
     @band = Band.find(params[:id])
+    @user = User.where(id: @band.users.each { |b| b})
 
     respond_to do |format|
       format.html # show.html.erb
