@@ -32,9 +32,13 @@
         <a href="/" class="brand">Kryptik</a> 
           <div class="nav-collapse collapse">
             <ul class="nav pull-right">
-               <li><a href="#">About Us</a></li>
+               <!-- <li><a href="#">About Us</a></li> -->
                 <% if signed_in? %>
+                  <% if current_user.profile_name != current_user.id.to_s && !current_user.city.nil? && !current_user.state.nil? %>
+                    <li><a href="/<%= current_user.profile_name %>"> My Profile </a></li>
+                  <% end %>
                   <li><%= link_to "Manage Myself", edit_user_path(current_user.id) %></li>
+                  <li><%= link_to "New Status Update", new_status_path %></li>
                   <li><%= link_to "Sign out", sign_out_path, method: :delete%></li>
                 <% else %>
                   <li><%= link_to "Sign in", sign_in_path %></li>

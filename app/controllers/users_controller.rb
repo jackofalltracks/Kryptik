@@ -36,7 +36,17 @@ class UsersController < Clearance::UsersController
     @user.add_role @plan  
     @user.save
     sign_in @user
-    redirect_to edit_user_path(current_user.id), notice: 'User was successfully created!'
+    redirect_to "/users/#{ current_user.id }/edit", notice: 'User was successfully created!'
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    respond_to do |format|
+      format.html { redirect_to root_url, notice: 'User was successfully dropped. Boo, Hiss.'  }
+      format.json { head :no_content }
+    end
   end
 
   def password_reset_params

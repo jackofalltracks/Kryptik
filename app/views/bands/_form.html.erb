@@ -1,11 +1,52 @@
-<%= simple_form_for(@band) do |f| %>
-  <%= f.error_notification %>
-  	<%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
-    <%= f.input :name, placeholder: "The Light Eaters" %>
-    <%= f.input :position, placeholder: "Sparrow Breeder" %>
-    <%= f.input :bio, as: :text, :input_html => {rows: 8} %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+<div class="row">
+
+  <div class="span5" style="padding-right:20px; border-right: 1px solid #ccc;">
+    <%= simple_form_for @band do |b| %>
+      <%= b.error_notification %>
+      <fieldset>
+        <legend>  Editing <%= @band.name %> </legend>
+        <%= b.input :name, placeholder: "The Light Eaters" %>
+
+          <%= b.simple_fields_for :members do |p| %>
+              <%= p.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+              <%= p.input :position, placeholder: "Sparrow Breeder", label: "My Position" %>
+          <% end %>
+        
+        <%= b.input :bio, as: :text, :input_html => {rows: 8} %>
+
+        <div class="form-actions">
+          <%= b.button :submit %>
+        </div>
+      </fieldset>
+    <% end %>
   </div>
-<% end %>
+
+
+  <div class="span5">
+    <legend class="page-header lead"> Existing <%= @band.name %> Members </legend>
+    <fieldset>
+      <div class=" ">
+        <div>
+          <a href="/#{@band.user.profile_name}">
+            <% @band.users.each do |user| %>
+              <%= image_tag user.gravatar_small, alt: "#{user.email} email address" %>
+              <div class="caption">  
+                  <!-- <span> <%= user.email %> </span> -->
+              </div> 
+            <% end %>  
+          </a>
+        </div>  
+      </div>  
+    </fieldset>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+

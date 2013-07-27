@@ -2,6 +2,7 @@
 
 <div class='text-field'>
   <%= form.hidden_field :role_ids, { value: Role.find_by_name(@plan).id } %>
+  <%= form.hidden_field :profile_name, { value: "#{ profile_name_default }" } %>
   <%= form.label :email %>
   <%= form.text_field :email, :type => 'email' %>
 </div>

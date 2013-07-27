@@ -1,0 +1,26 @@
+<div class="span9">
+    	<div class="page-header"> <h2>Status Updates <%= render 'profiles/new_status' %> </h2> </div>
+    	<% if @user.statuses.empty? %>
+		  <h3 class="well">Hmm. No status updates as of yet. </h3>
+		<% else %>
+	    	<div> 
+				<% @user.statuses.each do |s| %>	
+					<div class="media">
+					  <a class="pull-left" href="#">
+						<%= image_tag @user.gravatar_small, class: "media-object" %>
+					  </a>
+					  <div class="media-body">
+					    <h4 class="media-heading"> <%= @user.profile_name %>  </h4>
+					    <p> <%= s.content %> </p>
+					    <span>Created <%= time_ago_in_words(s.created_at) + " ago" %>
+					    	<% if s.user_id === current_user.id  %>    
+							  |     <%= link_to "Edit", edit_status_path(s) %> |
+							  <%= link_to "Delete", s, method: :delete, data: {confirm: "Are you sure you'd like to delete this bad boy?"} %>
+							<% end %>
+					    </span> 
+					  </div>
+					</div>
+				<% end %>
+			</div>
+		<% end %>	
+	</div>

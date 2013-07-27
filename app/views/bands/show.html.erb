@@ -3,7 +3,12 @@
 <div class="row-fluid">
 
 	<div class="span3">
-		<img src="http://placehold.it/350" />
+		<p> <img src="http://placehold.it/350" /> </p>
+
+		<div> 
+			<p class="page-header lead"> <%= @band.name %> Members</p>
+			<%= render 'members/band_members' %> 
+		</div>
 	</div>
 		
 	<div class="span9">
@@ -18,4 +23,5 @@
 		<%= render 'test_mp3' %>
 	</div>
 	
+
 </div>

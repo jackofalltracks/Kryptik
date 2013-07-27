@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
   before(:each) do
     @user = FactoryGirl.build(:user)
-    # @user2 = FactoryGirl.build(:user)
+    # @user.bands << Band.create(name: "Detroit Rails", bio: "The best in your Mommma house")
   end
 
   context 'when user is a Fan' do
@@ -17,22 +17,15 @@ describe User do
   end
 
   context 'when user is an Artist' do
-    
+
     it "add_role Artist method should work" do
       @user.add_role :artist
       @user.has_role?(:artist).should be_true
       @user.has_role?(:admin).should_not be_true
     end
 
-    it "should tell us if the User is a member of a specific Band" do
-      Band.create!(
-      name: "Balls Deep", 
-      user_id: 1, 
-      position: "Second Puncher", 
-      bio: "Hello!")
-      expect(@user.member_of? "Balls Deep").to eq("Balls Deep") 
-      expect(@user.member_of? "BaLlS dEEp").to eq("Balls Deep") 
-      expect(@user.member_of? "Billy Bob").to eq(false) 
+    it "User should have an Array of bands" do
+      expect(@user.bands.class).to eq(Array)
     end
   
   end
@@ -56,9 +49,21 @@ describe User do
   it { should respond_to(:country) }
   it { should respond_to(:zipcode) }
   it { should respond_to(:sex) }
+  it { should respond_to(:gravatar_url) }
+  it { should respond_to(:gravatar_small) }
+  it { should respond_to(:profile_name) }
 
   # Associations
   it { should have_many(:bands) }
+  it { should have_many(:members) }
+
+  it "gravatar_small & gravatar_url should return strings" do
+    expect(@user.gravatar_url).to_not be(nil)
+    expect(@user.gravatar_small).to_not be(nil)
+
+    expect(@user.gravatar_url.class).to be(String)
+    expect(@user.gravatar_small.class).to be(String)
+  end
 
   it "should be able to choose relevent gender" do
     @user.sex = "Male"
